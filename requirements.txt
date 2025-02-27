@@ -2,6 +2,7 @@
 # Please do not edit it manually.
 
 argcomplete==3.5.3
+cffi==1.17.1
 cfgv==3.4.0
 charset-normalizer==3.4.1
 colorama==0.4.6
@@ -15,11 +16,13 @@ iniconfig==2.0.0
 jinja2==3.1.5
 markupsafe==3.0.2
 nodeenv==1.9.1
+numpy==2.2.3
 packaging==24.2
 platformdirs==4.3.6
 pluggy==1.5.0
 pre-commit==4.1.0
 prompt-toolkit==3.0.50
+pycparser==2.22
 pyright==1.1.394
 pytest==8.3.4
 pytest-cov==6.0.0
@@ -28,6 +31,8 @@ pytest-watcher==0.4.3
 pyyaml==6.0.2
 questionary==2.1.0
 ruff==0.9.7
+sounddevice==0.5.1
+soundfile==0.13.1
 termcolor==2.5.0
 toml-sort==0.24.2
 tomlkit==0.13.2
@@ -35,3 +40,4 @@ typing-extensions==4.12.2
 virtualenv==20.29.2
 watchdog==6.0.0
 wcwidth==0.2.13
+websockets==15.0

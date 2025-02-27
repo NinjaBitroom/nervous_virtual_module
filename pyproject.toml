@@ -8,7 +8,7 @@ authors = [
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "NONE"}
-dependencies = []
+dependencies = ["sounddevice~=0.5", "numpy~=2.2", "soundfile~=0.13", "websockets~=15.0"]
 
 [dependency-groups]
 commit = [
@@ -57,6 +57,7 @@ post_init = {composite = [
   "toml-sort pyproject.toml",
   "pw --lock"
 ]}
+start = "python -m src.main.app"
 
 [tool.pyprojectx]
 main = [
@@ -70,6 +71,7 @@ update = "@pdm update"
 remove = "@pdm remove"
 export = "@pdm export"
 run = "@pdm run"
+start = "@pdm start"
 
 [tool.pyright]
 typeCheckingMode = "strict"
