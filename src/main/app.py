@@ -2,7 +2,7 @@
 
 import asyncio
 
-from src.views.client_views import client_view
+from src.main.configs.app import create_app
 
 if __name__ == "__main__":
-    asyncio.run(client_view())
+    asyncio.run(create_app())

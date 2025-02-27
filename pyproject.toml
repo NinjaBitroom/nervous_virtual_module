@@ -8,7 +8,7 @@ authors = [
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "NONE"}
-dependencies = ["sounddevice~=0.5", "numpy~=2.2", "soundfile~=0.13", "websockets~=15.0"]
+dependencies = ["sounddevice~=0.5", "numpy~=2.2", "soundfile~=0.13", "websockets~=15.0", "rich~=13.9"]
 
 [dependency-groups]
 commit = [
