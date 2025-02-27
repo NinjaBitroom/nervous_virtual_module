@@ -1,0 +1,132 @@
+[project]
+name = "nervous_virtual_module"
+version = "0.1.0"
+description = "Template for Python projects"
+authors = [
+  {name = "Gabriel Bitencourt Marin", email = "gabrielbitercourt@gmail.com"}
+]
+requires-python = "==3.13.*"
+readme = "README.md"
+license = {text = "NONE"}
+dependencies = []
+
+[dependency-groups]
+commit = [
+  "pre-commit~=4.1",
+  "commitizen~=4.2"
+]
+lint = [
+  "pyright~=1.1",
+  "ruff~=0.9"
+]
+format = [
+  "toml-sort~=0.24",
+  "ruff~=0.9"
+]
+test = [
+  "pytest~=8.3",
+  "pytest-cov~=6.0",
+  "pytest-watcher~=0.4",
+  "pytest-mock~=3.14"
+]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver2"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true
+
+[tool.coverage.report]
+exclude_also = ["if TYPE_CHECKING:"]
+
+[tool.coverage.run]
+omit = ["*/main/*"]
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+post_install = {composite = ["pre-commit install", "pdm export -o requirements.txt --without-hashes"]}
+post_init = {composite = [
+  "pdm install -d -k:all",
+  "git init",
+  "pdm update -u",
+  "pre-commit autoupdate",
+  "toml-sort pyproject.toml",
+  "pw --lock"
+]}
+
+[tool.pyprojectx]
+main = [
+  "pdm"
+]
+
+[tool.pyprojectx.aliases]
+add = "@pdm add"
+install = "@pdm install"
+update = "@pdm update"
+remove = "@pdm remove"
+export = "@pdm export"
+run = "@pdm run"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"
+ignore = ["pw"]
+
+[tool.pytest-watcher]
+now = true
+
+[tool.ruff]
+fix = true
+show-fixes = true
+line-length = 79
+extend-exclude = ["pw"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "COM812",
+  "COM819",
+  "ISC001",
+  "ISC002",
+  "D203",
+  "D213"
+]
+
+[tool.ruff.lint.isort]
+force-single-line = false
+force-wrap-aliases = false
+lines-after-imports = -1
+lines-between-types = 0
+split-on-trailing-comma = true
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "SLF001", "S105", "S106"]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 72
+max-line-length = 99
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.tomlsort]
+in_place = true
+sort_first = ["project", "dependency-groups"]

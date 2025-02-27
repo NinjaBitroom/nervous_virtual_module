@@ -1,0 +1,13 @@
+{
+    "editor.rulers": [80, 120],
+    "autoDocstring.docstringFormat": "google-notypes",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.rulers": [72, 79, 99],
+    },
+    "explorer.fileNesting.patterns": {
+        "pdm.toml": "pdm.lock, .pdm-python",
+        "pw": "pw.bat, pw.lock",
+        "pyproject.toml": "requirements.txt",
+    }
+}
